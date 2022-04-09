@@ -36,8 +36,25 @@ public class Practice {
      * @return a pajzs ereje
      */
     public static int getShieldPower(String shipClass) {
-        return -1;
+        switch (shipClass) {
+            case "Intrepid":
+                return 100;
+            case "Nova":
+                return 200;
+            case "Raven":
+                return 300;
+            case "Galaxy":
+                return 500;
+            case "Dreadnought":
+                return 800;
+            default:
+                return 0;
+
+        }
     }
+
+
+
 
     /**
      * 2. feladat - 2p
@@ -56,8 +73,13 @@ public class Practice {
      * @return az elvárt szint
      */
     public static double countRequirement(int[] scores) {
-        return 0.0;
+
+        int num = scores[0] + scores[scores.length - 1];  double eredmeny=(double)num/2;
+
+        return eredmeny;
+
     }
+
 
     /**
      * 3. feladat - 3p
@@ -77,7 +99,13 @@ public class Practice {
      * @return a hajó harcképes-e
      */
     public static boolean isShipAbleToFight(int shieldCharge, int weaponCharge) {
-        return false;
+
+        for (int i = 2; i <= 100; i++) {
+                double num1 =(double)(shieldCharge + weaponCharge)/ 2;
+            if (shieldCharge >20 && weaponCharge >20 && num1 > 50){
+                return true;
+            }
+        } return false;
     }
 
     /**
@@ -109,7 +137,16 @@ public class Practice {
      * @return a megrendelés teljesítéséhez szükséges napok száma
      */
     public static int getSpaceRabbitDays(int startRabbitValue, int requiredRabbits) {
-        return -1;
+        int x = 0;
+           while (startRabbitValue < requiredRabbits) {
+            x++;
+            startRabbitValue *= 2;
+            if (startRabbitValue == requiredRabbits) {
+                         break;
+            }
+        }
+        x++;
+        return x;
     }
 
     /**
@@ -128,7 +165,11 @@ public class Practice {
      * @return a teljes sereg száma
      */
     public static int sumArmy(int[] armyOfPlanets) {
-        return -1;
+        int army = 0;
+        for (int armyOfPlanet : armyOfPlanets) {
+            army += armyOfPlanet;
+        }
+        return army;
     }
 
     /**
@@ -147,7 +188,15 @@ public class Practice {
      * @return a megnyert csaták darabszáma
      */
     public static int countVictories(int[] battles) {
-        return -1;
+
+        int nyertcsata = 0;
+
+        for (int i = 0; i < battles.length; i++) {
+            if (battles[i] > 0)
+            nyertcsata++;
+
+        }
+        return nyertcsata;
     }
 
     /**
@@ -164,8 +213,25 @@ public class Practice {
      * @param heights a kadétok magassága
      */
     public static boolean isInAscendingOrder(int[] heights) {
-        return false;
+
+        int[] xyz = heights.clone();
+        boolean sorted = true;
+        for (int i = 0; i < xyz.length - 1; i++) {
+
+            for (int j = 0; j < xyz.length - i - 1; j++) {
+                if (xyz[j] > xyz[j + 1]) {int swap = xyz[j];
+                    xyz[j] = xyz[j + 1];
+                    xyz[j + 1] = swap;
+                    sorted = false;
+                }
+            }
+            if (sorted) {
+                break;
+            }
+        }
+        return sorted;
     }
+
 
     /**
      * 8. feladat - 4p
@@ -189,7 +255,15 @@ public class Practice {
      * @return az eredeti üzenet karakterei fordított sorrendben
      */
     public static char[] reverseMessage(char[] message) {
-        return null;
+
+        char[] valami = message.clone();
+        char valami2 = 0;
+        for (int i = 0; i < valami.length / 2; i++) {
+            valami2 = valami[i];
+             valami[i] = valami[valami.length - 1 - i];
+            valami[valami.length - 1 - i] = valami2;
+        }
+                return valami;
     }
 
     /**
@@ -221,7 +295,19 @@ public class Practice {
      * @return a legtöbb veszteséget tartalmazó hónap index-száma
      */
     public static int getWorstMonthIndex(int[][] lossesPerMonths) {
-        return -1;
+        int asd = 0;
+        int rossz = 0;
+        for (int i = 0; i < lossesPerMonths.length; i++) {
+            int sum1 = 0;
+            for (int j = 0; j < lossesPerMonths[i].length; j++) {
+                sum1 += lossesPerMonths[i][j];
+            }
+            if (sum1 > rossz) {
+                rossz = sum1;
+                asd = i;
+            }
+        }
+        return asd;
     }
 
     /**
@@ -249,7 +335,28 @@ public class Practice {
      */
     public static void sortShipsByPower(String[] shipNames, int[] shipPowers) {
 
+        boolean sorted = true;
+        for (int i = 0; i < shipPowers.length - 1; i++) {
+            for (int j = 0; j < shipPowers.length - i - 1; j++) {
+                if (shipPowers[j] < shipPowers[j + 1]) {int swap = shipPowers[j];
+                    shipPowers[j] = shipPowers[j + 1];
+                    shipPowers[j + 1] = swap;
+                    sorted = false;
+                }
+
+
+            }
+            if (sorted) {
+                break;
+            }
+        }
     }
+
+
+
+
+
+
 
     // --------------------------------------------------------------------------------------
 
